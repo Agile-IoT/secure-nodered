@@ -3,6 +3,7 @@ module.exports = {
       clientId : "clientId",
       clientSecret : "secret",
       userid : "bob!@!agile-local",
+      idmNodeType: "idm-token",
       port : 8000
     },
     "nodered":{ 
