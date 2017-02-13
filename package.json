@@ -1,0 +1,22 @@
+{
+  "name": "secure-nodered",
+  "version": "1.0.0",
+  "description": "node-red using the AGILE security framework ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Agile-IoT/secure-nodered.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Agile-IoT/secure-nodered/issues"
+  },
+  "homepage": "https://github.com/Agile-IoT/secure-nodered#readme",
+  "dependencies": {
+    "node-red": "^0.16.2"
+  }
+}
