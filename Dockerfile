@@ -5,6 +5,7 @@ COPY . /opt/secure-nodered
 RUN npm install
 EXPOSE 1880
 
+
 #RUN npm install -g node-red-dashboard
 
 #RUN npm install -g node-red-contrib-graphs
@@ -16,8 +17,8 @@ EXPOSE 1880
 #COPY agile-node-red-nodes agile-node-red-nodes
 
 #RUN npm install -g agile-node-red-nodes
-
+RUN sudo apt-get install git
 RUN git clone https://github.com/agile-iot/node-red-idm-token-node /opt/node-red-idm-token-node
-CP /opt/node-red-idm-token-node/*.js  secure-nodered/node_modules/node-red/nodes/
-CP /opt/node-red-idm-token-node/*.html secure-nodered/node_modules/node-red/nodes/
+RUN cp /opt/node-red-idm-token-node/idm-token/*.js  /opt/secure-nodered/node_modules/node-red/nodes/
+RUN cp /opt/node-red-idm-token-node/idm-token/*.html /opt/secure-nodered/node_modules/node-red/nodes/
 CMD node index
