@@ -17,6 +17,7 @@ EXPOSE 1880
 
 #RUN npm install -g agile-node-red-nodes
 
-git clone https://github.com/agile-iot/node-red-idm-token-node /opt/secure-nodered/node_modules/node-red/nodes/
-
+RUN git clone https://github.com/agile-iot/node-red-idm-token-node /opt/node-red-idm-token-node
+CP /opt/node-red-idm-token-node/*.js  secure-nodered/node_modules/node-red/nodes/
+CP /opt/node-red-idm-token-node/*.html secure-nodered/node_modules/node-red/nodes/
 CMD node index
