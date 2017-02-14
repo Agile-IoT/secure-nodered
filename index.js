@@ -5,25 +5,40 @@ var express = require("express");
 var RED = require("node-red");
 
 var conf = require("./conf/node-red-security-conf");
+var settings = conf.nodered;
+var authMiddleware = require("./lib/auth").bind(this,conf);
+
+
 
 // Create an Express app
 var app = express();
-
+//required by agile not node-red
 app.use(bodyParser.urlencoded({ extended: true }))
     .use(bodyParser.json());
-
+app.set('view engine', 'ejs');
 // Add a simple route for static content served from 'public'
 app.use("/",express.static("public"));
 
+// this part ensures that only the proper agile user sees the node-red editor
+app.use("/red-agile",authMiddleware, function (req, res, next){
+    res.render('index', {
+      "user": conf.nodered_integration.username,
+      "password": conf.nodered_integration.password,
+      "client_id": conf.nodered_integration.client_id,
+      "path" : settings.httpAdminRoot
+    });
+});
+
+
 // Create a server
 var server = http.createServer(app);
-
 // Create the settings object - see default settings.js file for other options
-var settings = conf.nodered;
+settings.httpAdminAuth = settings.httpAdminAuth || settings.httpAuth;
 
 // Initialise the runtime with a server and settings
 RED.init(server,settings);
 
+//this middleware rewrites the idm-node credentials to enable fetching the token from the "session"
 var deployURL = settings.httpAdminRoot.match(path.sep + "$") ? settings.httpAdminRoot : settings.httpAdminRoot + path.sep;
 deployURL += "flows";
 
@@ -48,11 +63,11 @@ app.post(deployURL, function(req, res, next) {
 });
 
 // Serve the editor UI from /red
-app.use(settings.httpAdminRoot,RED.httpAdmin);
+app.use(settings.httpAdminRoot, RED.httpAdmin);
 
 
 // Serve the http nodes UI from /api
-app.use(settings.httpNodeRoot,RED.httpNode);
+app.use(settings.httpNodeRoot, RED.httpNode);
 
 server.listen(conf.security.port);
 
