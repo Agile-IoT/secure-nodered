@@ -4,7 +4,7 @@ module.exports = {
     clientSecret: "Ultrasecretstuff",
     userid: "bob!@!agile-local",
     idmNodeType: "idm-token",
-    port: 8000
+    port: 1880
   },
   "idm": {
     userInfoUrl: "http://localhost:3000/oauth2/api/userinfo"
