@@ -1,0 +1,26 @@
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+var redPath = "<%= path %>";
+var body = {
+    client_id: "<%= client_id %>",
+    grant_type: "password",
+    username : "<%= user %>",
+    password: "<%= password %>",
+    scope:""
+};
+$.ajax({
+    url: redPath + "/auth/token",
+    type: "POST",
+    data: body
+}).done(function(data,textStatus,xhr) {
+    localStorage.setItem("auth-tokens",JSON.stringify(data));
+    window.location = "/red/";
+}).fail(function(jqXHR,textStatus,errorThrown) {
+    console.log("could not authenticate!");
+    alert("could not authenticate with Node-RED "+JSON.stringify(errorThrown));
+})
+
+</script>
+
+</html>
