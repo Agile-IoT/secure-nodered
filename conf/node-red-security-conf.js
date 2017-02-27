@@ -9,7 +9,7 @@ module.exports = {
   "idm": {
     userInfoUrl: "http://localhost:3000/oauth2/api/userinfo"
   },
-  "nodered_integration":{//this is used to login over the browser with node-red admin
+  "nodered_integration": { //this is used to login over the browser with node-red admin
     username: "admin",
     password: "password", //the proper hash of this password goes in nodered.adminAuth.users[0].password
     client_id: "node-red-editor"

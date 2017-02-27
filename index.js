@@ -6,6 +6,7 @@ var RED = require("node-red");
 
 var conf = require("./conf/node-red-security-conf");
 var settings = conf.nodered;
+// authMiddleware  places the token for the first time globally so that the node inside the flow can pick it up
 var authMiddleware = require("./lib/auth").bind(this,conf);
 
 
@@ -20,6 +21,7 @@ app.set('view engine', 'ejs');
 app.use("/",express.static("public"));
 
 // this part ensures that only the proper agile user sees the node-red editor
+// authMiddleware  places the token for the first time globally so that the node inside the flow can pick it up
 app.use("/red-agile",authMiddleware, function (req, res, next){
     res.render('index', {
       "user": conf.nodered_integration.username,
