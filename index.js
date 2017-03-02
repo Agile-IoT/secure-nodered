@@ -18,7 +18,9 @@ app.use(bodyParser.urlencoded({ extended: true }))
     .use(bodyParser.json());
 app.set('view engine', 'ejs');
 // Add a simple route for static content served from 'public'
-app.use("/",express.static("public"));
+app.get("/",function(req,res,next){
+	res.send("hi, you need to go to /red-agile/ and pass a token as a query argument in the url");
+});
 
 // this part ensures that only the proper agile user sees the node-red editor
 // authMiddleware  places the token for the first time globally so that the node inside the flow can pick it up
