@@ -2,7 +2,7 @@ module.exports = {
   "security": {
     clientId: "MyAgileClient2",
     clientSecret: "Ultrasecretstuff",
-    userid: "bob!@!agile-local",
+    userid: "agile!@!agile-local",
     idmNodeType: "idm-token",
     port: 1880
   },
