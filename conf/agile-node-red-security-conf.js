@@ -15,8 +15,8 @@ module.exports = {
     client_id: "node-red-editor"
   },
   "nodered": {
-    httpAdminRoot: "/red",
-    httpNodeRoot: "/api",
+    httpAdminRoot: "/red/",
+    httpNodeRoot: "/api/",
     userDir: "./.nodered/",
     adminAuth: {
       type: "credentials",
