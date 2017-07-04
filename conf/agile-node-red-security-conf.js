@@ -17,7 +17,7 @@ module.exports = {
   "nodered": {
     httpAdminRoot: "/red/",
     httpNodeRoot: "/api/",
-    userDir: "./.nodered/",
+    userDir: "/opt/secure-nodered/.nodered/",
     adminAuth: {
       type: "credentials",
       users: [{
