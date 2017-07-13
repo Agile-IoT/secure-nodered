@@ -7,7 +7,7 @@ module.exports = {
     port: 1880
   },
   "idm": {
-    userInfoUrl: "http://agile-idm:3000/oauth2/api/userinfo"
+    userInfoUrl: "http://agile-security:3000/oauth2/api/userinfo"
   },
   "nodered_integration": { //this is used to login over the browser with node-red admin
     username: "admin",
